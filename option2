@@ -1,0 +1,34 @@
+pragma solidity ^0.8.0;
+
+contract AdminOnlyFunctions {
+    address public admin;
+
+    constructor() {
+        admin = msg.sender;
+    }
+
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Only admin can access this function");
+        _;
+    }
+
+    function changeAdmin(address newAdmin) public onlyAdmin {
+        require(newAdmin != address(0), "Invalid admin address");
+        admin = newAdmin;
+    }
+
+    function adminFunction1() public onlyAdmin {
+        // Only the admin can execute this function
+        // Add your logic here
+    }
+
+    function adminFunction2() public onlyAdmin {
+        // Only the admin can execute this function
+        // Add your logic here
+    }
+
+    function adminFunction3() public onlyAdmin {
+        // Only the admin can execute this function
+        // Add your logic here
+    }
+}
